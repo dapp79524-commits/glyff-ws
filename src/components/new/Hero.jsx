@@ -34,6 +34,7 @@ export default function Hero() {
   }, [])
 
   useEffect(() => {
+    /*
     const ctx = gsap.context(() => {
       // Animate hero content
       gsap.fromTo('.hero-title-line', 
@@ -70,12 +71,13 @@ export default function Hero() {
     }, heroRef)
 
     return () => ctx.revert()
+    */
   }, [])
 
   return (
     <section ref={heroRef} className="hero">
       <div className="hero-bg"></div>
-      
+
       {/* Floating notification cards */}
       <div className="floating-photos">
         <div className="floating-photo photo-1">
@@ -109,7 +111,7 @@ export default function Hero() {
           <span className="hero-title-line">Tell me your type,</span>
           <span className="hero-title-line">I set up the date</span>
         </h1>
-        
+
         <div className="hero-subtitle-badge">
           Exclusive to Delhi's Top Colleges
         </div>

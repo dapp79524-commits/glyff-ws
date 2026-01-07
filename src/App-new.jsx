@@ -28,6 +28,7 @@ function HomePage() {
   }, [])
 
   useEffect(() => {
+    /*
     if (!isLoaded || !appRef.current) return
 
     // Smooth background color transition
@@ -54,6 +55,7 @@ function HomePage() {
       ScrollTrigger.getAll().forEach(t => t.kill())
       document.body.style.backgroundColor = '#f0efdb'
     }
+    */
   }, [isLoaded])
 
   return (
