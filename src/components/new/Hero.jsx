@@ -34,25 +34,24 @@ export default function Hero() {
   }, [])
 
   useEffect(() => {
-    /*
     const ctx = gsap.context(() => {
       // Animate hero content
-      gsap.fromTo('.hero-title-line', 
+      gsap.fromTo('.hero-title-line',
         { opacity: 0, y: 50 },
         { opacity: 1, y: 0, duration: 1, stagger: 0.2, ease: 'power3.out', delay: 0.3 }
       )
-      
-      gsap.fromTo('.hero-subtitle-badge', 
+
+      gsap.fromTo('.hero-subtitle-badge',
         { opacity: 0, scale: 0.8 },
         { opacity: 1, scale: 1, duration: 0.6, ease: 'back.out(1.7)', delay: 0.8 }
       )
 
-      gsap.fromTo('.hero-selector', 
+      gsap.fromTo('.hero-selector',
         { opacity: 0, y: 30 },
         { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out', delay: 1 }
       )
 
-      gsap.fromTo('.hero-buttons', 
+      gsap.fromTo('.hero-buttons',
         { opacity: 0, y: 20 },
         { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', delay: 1.2 }
       )
@@ -71,7 +70,6 @@ export default function Hero() {
     }, heroRef)
 
     return () => ctx.revert()
-    */
   }, [])
 
   return (
