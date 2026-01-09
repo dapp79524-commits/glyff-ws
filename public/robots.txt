@@ -1,0 +1,7 @@
+# Robots.txt for glyff.ai
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://glyff.ai/sitemap.xml
