@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { supabase } from '../../lib/supabase'
+import DatePicker from './DatePicker'
 
 const universities = [
   'Delhi University (DU)',
@@ -42,9 +43,9 @@ export default function WaitlistForm() {
     setIsSubmitting(true)
 
     // Validate required fields
-    if (!formData.firstName || !formData.lastName || !formData.phone || 
-        !formData.university || !formData.email || !formData.birthday || 
-        !formData.gender || !formData.interestedIn) {
+    if (!formData.firstName || !formData.lastName || !formData.phone ||
+      !formData.university || !formData.email || !formData.birthday ||
+      !formData.gender || !formData.interestedIn) {
       setError('Please fill in all required fields')
       setIsSubmitting(false)
       return
@@ -130,7 +131,7 @@ export default function WaitlistForm() {
       </div>
 
       <div className="form-group">
-        <label htmlFor="email">Email * <span style={{fontWeight: 400, color: '#888'}}>(university email preferred)</span></label>
+        <label htmlFor="email">Email * <span style={{ fontWeight: 400, color: '#888' }}>(university email preferred)</span></label>
         <input
           type="email"
           id="email"
@@ -186,13 +187,10 @@ export default function WaitlistForm() {
 
       <div className="form-group">
         <label htmlFor="birthday">Birthday *</label>
-        <input
-          type="date"
-          id="birthday"
+        <DatePicker
           name="birthday"
           value={formData.birthday}
           onChange={handleChange}
-          required
         />
       </div>
 
@@ -274,8 +272,8 @@ export default function WaitlistForm() {
 
       {error && <div className="form-error">{error}</div>}
 
-      <button 
-        type="submit" 
+      <button
+        type="submit"
         className="btn-primary btn-large btn-submit"
         disabled={isSubmitting}
       >
