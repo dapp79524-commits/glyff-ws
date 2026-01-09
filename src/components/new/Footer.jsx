@@ -31,7 +31,6 @@ export default function Footer() {
         <div className="footer-brand">
           <div className="footer-logo">Glyff<span style={{ fontStyle: 'italic', fontWeight: 400 }}>AI</span></div>
           <p className="footer-tagline">A friend that texts you ready-to-go dates</p>
-          <p className="footer-misspelling">Glyff is sometimes searched as Gliff or Glif — you're in the right place.</p>
         </div>
 
         <div className="footer-links">
