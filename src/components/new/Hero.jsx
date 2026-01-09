@@ -4,8 +4,8 @@ import { gsap } from 'gsap'
 // Glyff AI app URL (Expo web)
 const APP_URL = 'http://localhost:8081'
 
-const typeOptions = ['DU students', 'JNU scholars', 'DTU engineers', 'sports enthusiasts', 'music lovers', 'foodies']
-const loveOptions = ['late night chai runs', 'spontaneous adventures', 'deep conversations', 'trying new cafes', 'watching sunsets', 'road trips']
+const typeOptions = ['DU student', 'JNU scholar', 'DTU engineer', 'sports enthusiast', 'music lover', 'foodie']
+const loveOptions = ['late night chai runs', 'spontaneous adventures', 'deep conversations', 'trying new cafes', 'watching sunsets', 'road trips', 'listening to Lana Del Rey']
 const andOptions = ['shares my taste in music', 'makes me laugh', 'loves dogs', 'enjoys quiet evenings', 'is passionate about life', 'believes in real connections']
 
 export default function Hero() {
