@@ -1371,6 +1371,33 @@ img { max-width: 100%; display: block; }
 
 .footer-links a:hover { color: var(--black); }
 
+.footer-region {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.region-label {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.region-switch-btn {
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 1px solid var(--black);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.region-switch-btn:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
 /* ========== MANIFESTO PAGE ========== */
 .manifesto-page {
   min-height: 100vh;
@@ -1995,6 +2022,7 @@ img { max-width: 100%; display: block; }
   .cta-form { flex-direction: column; }
   .footer-content { flex-direction: column; gap: 1.5rem; text-align: center; }
   .footer-links { flex-wrap: wrap; justify-content: center; }
+  .footer-region { margin-top: 0.5rem; }
   
   /* How It Works responsive */
   .how-cards { grid-template-columns: 1fr; max-width: 350px; }

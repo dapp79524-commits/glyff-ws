@@ -1,22 +1,12 @@
 import { useState } from 'react'
 import { supabase } from '../../lib/supabase'
 import DatePicker from './DatePicker'
-
-const universities = [
-  'Delhi University (DU)',
-  'Delhi Technological University (DTU)',
-  'Jawaharlal Nehru University (JNU)',
-  'Netaji Subhas University of Technology (NSUT)',
-  'Indraprastha University (IP)',
-  'Jamia Millia Islamia',
-  'Indian Institute of Technology Delhi (IIT-D)',
-  'Ambedkar University Delhi',
-  'GGSIPU',
-  'Ashoka University',
-  'Other'
-]
+import { useRegion } from '../../context/RegionContext'
 
 export default function WaitlistForm() {
+  const { config, region } = useRegion()
+  const universities = config.universities
+  
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -71,6 +61,7 @@ export default function WaitlistForm() {
           birthday: formData.birthday,
           gender: formData.gender,
           interested_in: formData.interestedIn,
+          region: region,
           created_at: new Date().toISOString()
         }])
 
@@ -151,7 +142,7 @@ export default function WaitlistForm() {
           name="phone"
           value={formData.phone}
           onChange={handleChange}
-          placeholder="+91 98765 43210"
+          placeholder={config.phonePlaceholder}
           required
         />
       </div>

@@ -1,18 +1,18 @@
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
+import { useRegion } from '../../context/RegionContext'
 
-// Glyff AI app URL (Expo web)
-const APP_URL = 'http://localhost:8081'
-
-const typeOptions = ['DU student', 'JNU scholar', 'DTU engineer', 'sports enthusiast', 'music lover', 'foodie']
-const loveOptions = ['late night chai runs', 'spontaneous adventures', 'deep conversations', 'trying new cafes', 'watching sunsets', 'road trips', 'listening to Lana Del Rey']
 const andOptions = ['shares my taste in music', 'makes me laugh', 'loves dogs', 'enjoys quiet evenings', 'is passionate about life', 'believes in real connections']
 
 export default function Hero() {
   const heroRef = useRef(null)
+  const { config } = useRegion()
   const [typeIndex, setTypeIndex] = useState(0)
   const [loveIndex, setLoveIndex] = useState(0)
   const [andIndex, setAndIndex] = useState(0)
+  
+  const typeOptions = config.typeOptions
+  const loveOptions = config.loveOptions
 
   useEffect(() => {
     // Auto-rotate options
@@ -111,7 +111,7 @@ export default function Hero() {
         </h1>
 
         <div className="hero-subtitle-badge">
-          Exclusive to Delhi's Top Colleges
+          {config.badge}
         </div>
 
         <div className="hero-selector">

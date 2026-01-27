@@ -1,9 +1,13 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useRegion } from '../../context/RegionContext'
 
 export default function Footer() {
   const footerRef = useRef(null)
+  const { region, switchRegion } = useRegion()
+  const otherRegion = region === 'au' ? 'in' : 'au'
+  const otherRegionName = region === 'au' ? 'India' : 'Australia'
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -38,6 +42,16 @@ export default function Footer() {
           <a href="#safety">Safety</a>
           <a href="#faq">FAQ</a>
           <a href="/manifesto">Manifesto</a>
+        </div>
+        
+        <div className="footer-region">
+          <span className="region-label">Wrong region?</span>
+          <button 
+            className="region-switch-btn"
+            onClick={() => switchRegion(otherRegion)}
+          >
+            Switch to {otherRegionName}
+          </button>
         </div>
       </div>
     </footer>

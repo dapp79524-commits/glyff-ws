@@ -1,11 +1,28 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useRegion } from '../../context/RegionContext'
 
 gsap.registerPlugin(ScrollTrigger)
 
+// Region-specific manifesto content
+const manifestoContent = {
+  in: {
+    locationTag: 'Delhi colleges.',
+    networkText: "It will simulate interactions across Delhi's college network—",
+    transitText: 'probably a metro ride away.'
+  },
+  au: {
+    locationTag: 'Sydney universities.',
+    networkText: "It will simulate interactions across Sydney's university network—",
+    transitText: 'probably a train ride away.'
+  }
+}
+
 export default function ManifestoPage() {
   const pageRef = useRef(null)
+  const { region } = useRegion()
+  const content = manifestoContent[region] || manifestoContent.in
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -75,7 +92,7 @@ export default function ManifestoPage() {
           <p className="block-intro">And for the first time, this isn't global noise.</p>
           <p className="block-highlight">It's your world.</p>
           <div className="location-tags">
-            <span>Delhi colleges.</span>
+            <span>{content.locationTag}</span>
             <span>Your campus.</span>
             <span>Your crowd.</span>
             <span>Your city.</span>
@@ -85,7 +102,7 @@ export default function ManifestoPage() {
         <div className="manifesto-block action">
           <p>Just tell your AI who you're looking for:</p>
           <p className="types">A collaborator. A co-founder. A best friend. A soulmate.</p>
-          <p>It will simulate interactions across Delhi's college network—</p>
+          <p>{content.networkText}</p>
           <p className="accent">until it finds the people that actually feel right.</p>
         </div>
 
@@ -112,7 +129,7 @@ export default function ManifestoPage() {
 
         <div className="manifesto-block finale">
           <p>The people you're meant to meet are out there—</p>
-          <p className="metro">probably a metro ride away.</p>
+          <p className="metro">{content.transitText}</p>
           <div className="final-words">
             <p>You won't have to settle.</p>
             <p>You won't have to chase.</p>

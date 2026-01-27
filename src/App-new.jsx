@@ -12,6 +12,8 @@ import CTA from './components/new/CTA'
 import Footer from './components/new/Footer'
 import ManifestoPage from './components/new/ManifestoPage'
 import WaitlistPage from './components/new/WaitlistPage'
+import { RegionProvider } from './context/RegionContext'
+import SEOHead from './components/SEOHead'
 import './styles/new-main.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -73,8 +75,21 @@ function HomePage() {
   )
 }
 
+// Helper to get path without region prefix
+function getPathWithoutRegion(path) {
+  return path.replace(/^\/(au|in)/, '') || '/'
+}
+
+// Helper to get region from path
+function getRegionPrefix(path) {
+  const match = path.match(/^\/(au|in)/)
+  return match ? match[1] : 'in'
+}
+
 export default function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname)
+  const regionPrefix = getRegionPrefix(currentPath)
+  const pathWithoutRegion = getPathWithoutRegion(currentPath)
 
   useEffect(() => {
     const handlePopState = () => {
@@ -85,10 +100,16 @@ export default function App() {
       const link = e.target.closest('a')
       if (link && link.href.startsWith(window.location.origin)) {
         const path = new URL(link.href).pathname
-        if (path === '/manifesto' || path === '/waitlist' || path === '/') {
+        const cleanPath = getPathWithoutRegion(path)
+        const currentRegion = getRegionPrefix(window.location.pathname)
+        
+        // Handle internal navigation
+        if (cleanPath === '/manifesto' || cleanPath === '/waitlist' || cleanPath === '/') {
           e.preventDefault()
-          window.history.pushState({}, '', path)
-          setCurrentPath(path)
+          // Preserve region prefix in URL
+          const newPath = cleanPath === '/' ? `/${currentRegion}` : `/${currentRegion}${cleanPath}`
+          window.history.pushState({}, '', newPath)
+          setCurrentPath(newPath)
           window.scrollTo(0, 0)
         }
       }
@@ -103,13 +124,20 @@ export default function App() {
     }
   }, [])
 
-  if (currentPath === '/manifesto') {
-    return <ManifestoPage />
+  // Route based on path without region prefix
+  let content
+  if (pathWithoutRegion === '/manifesto') {
+    content = <ManifestoPage />
+  } else if (pathWithoutRegion === '/waitlist') {
+    content = <WaitlistPage />
+  } else {
+    content = <HomePage />
   }
 
-  if (currentPath === '/waitlist') {
-    return <WaitlistPage />
-  }
-
-  return <HomePage />
+  return (
+    <RegionProvider>
+      <SEOHead />
+      {content}
+    </RegionProvider>
+  )
 }

@@ -1,6 +1,22 @@
 {
     "rewrites": [
         {
+            "source": "/au/(.*)",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/in/(.*)",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/au",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/in",
+            "destination": "/index.html"
+        },
+        {
             "source": "/(.*)",
             "destination": "/index.html"
         }
