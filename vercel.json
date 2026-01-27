@@ -1,4 +1,41 @@
 {
+    "redirects": [
+        {
+            "source": "/",
+            "has": [
+                {
+                    "type": "header",
+                    "key": "x-vercel-ip-country",
+                    "value": "AU"
+                }
+            ],
+            "destination": "/au",
+            "permanent": false
+        },
+        {
+            "source": "/",
+            "has": [
+                {
+                    "type": "header",
+                    "key": "x-vercel-ip-country",
+                    "value": "IN"
+                }
+            ],
+            "destination": "/in",
+            "permanent": false
+        },
+        {
+            "source": "/",
+            "missing": [
+                {
+                    "type": "cookie",
+                    "key": "glyff_region"
+                }
+            ],
+            "destination": "/in",
+            "permanent": false
+        }
+    ],
     "rewrites": [
         {
             "source": "/au/(.*)",
